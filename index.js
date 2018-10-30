@@ -85,11 +85,11 @@ var processRequest = function(req, res) {
 // Define the handlers
 var handlers = {};
 
-// Ping handler
+// Handle the post with a welcome message
 handlers.hello = function(data, callback) {
   if (data.method === "post") {
     callback(200, {
-      msg: "Hello there! Got your payload.",
+      msg: "Hello there! Your payload is appreciated!",
       payload: data.payload
     });
   } else {
