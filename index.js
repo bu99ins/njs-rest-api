@@ -87,10 +87,16 @@ var handlers = {};
 
 // Ping handler
 handlers.hello = function(data, callback) {
-  callback(200, {
-    msg: "Hello there! Got your payload.",
-    payload: data.payload
-  });
+  if (data.method === "post") {
+    callback(200, {
+      msg: "Hello there! Got your payload.",
+      payload: data.payload
+    });
+  } else {
+    callback(406, {
+      msg: "Some POST expected!"
+    });
+  }
 };
 
 // Not found handler
