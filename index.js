@@ -10,9 +10,7 @@ var StringDecoder = require("string_decoder").StringDecoder;
 var config = require("./config");
 
 // Instantiate the HTTP server
-var httpServer = http.createServer(function(req, res) {
-  unifiedServer(req, res);
-});
+var httpServer = http.createServer((req, res) => processRequest(req, res));
 
 // Start the HTTP server
 httpServer.listen(config.httpPort, function() {
@@ -20,7 +18,7 @@ httpServer.listen(config.httpPort, function() {
 });
 
 // Implement the server logic
-var unifiedServer = function(req, res) {
+var processRequest = (req, res) => {
   // Get the url and parse it
   var parsedUrl = url.parse(req.url, true);
 
