@@ -18,7 +18,7 @@ httpServer.listen(config.httpPort, function() {
 });
 
 // Implement the server logic
-var processRequest = (req, res) => {
+var processRequest = function(req, res) {
   // Get the url and parse it
   var parsedUrl = url.parse(req.url, true);
 
@@ -86,7 +86,7 @@ var processRequest = (req, res) => {
 var handlers = {};
 
 // Ping handler
-handlers.ping = function(data, callback) {
+handlers.hello = function(data, callback) {
   callback(200);
 };
 
@@ -97,5 +97,5 @@ handlers.notFound = function(data, callback) {
 
 //Define a request router
 var router = {
-  ping: handlers.ping
+  hello: handlers.hello
 };
