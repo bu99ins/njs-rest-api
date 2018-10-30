@@ -87,7 +87,10 @@ var handlers = {};
 
 // Ping handler
 handlers.hello = function(data, callback) {
-  callback(200);
+  callback(200, {
+    msg: "Hello there! Got your payload.",
+    payload: data.payload
+  });
 };
 
 // Not found handler
